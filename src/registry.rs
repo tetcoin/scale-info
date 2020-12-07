@@ -205,14 +205,14 @@ impl Registry {
 
 /// A read-only registry, to be used for decoding/deserializing
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "S: Serialize",
-    deserialize = "S: DeserializeOwned",
-)))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(serialize = "S: Serialize", deserialize = "S: DeserializeOwned",))
+)]
 #[derive(Debug, PartialEq, Eq, Decode)]
 pub struct RegistryReadOnly<S = &'static str>
 where
-    S: PartialEq + Eq + PartialOrd + Ord + Clone + Debug
+    S: PartialEq + Eq + PartialOrd + Ord + Clone + Debug,
 {
     types: Vec<Type<CompactForm<S>>>,
 }
