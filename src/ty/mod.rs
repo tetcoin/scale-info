@@ -54,29 +54,28 @@ pub use self::{
 };
 
 /// A [`Type`] definition with optional metadata.
-#[derive(
-    PartialEq,
-    Eq,
-    PartialOrd,
-    Ord,
-    Clone,
-    From,
-    Debug,
-    Encode,
-    Decode,
-)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "T::Type: Serialize, T::String: Serialize",
-    deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
-)))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "T::Type: Serialize, T::String: Serialize",
+        deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
+    ))
+)]
 #[cfg_attr(feature = "serde", serde(rename_all = "lowercase"))]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, From, Debug, Encode, Decode)]
 pub struct Type<T: Form = MetaForm> {
     /// The unique path to the type. Can be empty for built-in types
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Path::is_empty", default))]
+    #[cfg_attr(
+        feature = "serde",
+        serde(skip_serializing_if = "Path::is_empty", default)
+    )]
     path: Path<T>,
     /// The generic type parameters of the type in use. Empty for non generic types
-    #[cfg_attr(feature = "serde", serde(rename = "params", skip_serializing_if = "Vec::is_empty", default))]
+    #[cfg_attr(
+        feature = "serde",
+        serde(rename = "params", skip_serializing_if = "Vec::is_empty", default)
+    )]
     type_params: Vec<T::Type>,
     /// The actual type definition
     #[cfg_attr(feature = "serde", serde(rename = "def"))]
@@ -159,23 +158,16 @@ where
 }
 
 /// The possible types a SCALE encodable Rust value could have.
-#[derive(
-    PartialEq,
-    Eq,
-    PartialOrd,
-    Ord,
-    Clone,
-    From,
-    Debug,
-    Encode,
-    Decode,
-)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "T::Type: Serialize, T::String: Serialize",
-    deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
-)))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "T::Type: Serialize, T::String: Serialize",
+        deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
+    ))
+)]
 #[cfg_attr(feature = "serde", serde(rename_all = "lowercase"))]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, From, Debug, Encode, Decode)]
 pub enum TypeDef<T: Form = MetaForm> {
     /// A composite type (e.g. a struct or a tuple)
     Composite(TypeDefComposite<T>),
@@ -207,8 +199,8 @@ impl IntoCompact for TypeDef {
 }
 
 /// A primitive Rust type.
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Debug)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "lowercase"))]
 pub enum TypeDefPrimitive {
     /// `bool` type
@@ -244,12 +236,15 @@ pub enum TypeDefPrimitive {
 }
 
 /// An array type.
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "T::Type: Serialize, T::String: Serialize",
-    deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
-)))]
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Debug)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "T::Type: Serialize, T::String: Serialize",
+        deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
+    ))
+)]
 pub struct TypeDefArray<T: Form = MetaForm> {
     /// The length of the array type.
     len: u32,
@@ -294,10 +289,13 @@ where
 
 /// A type to refer to tuple types.
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "T::Type: Serialize, T::String: Serialize",
-    deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
-)))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "T::Type: Serialize, T::String: Serialize",
+        deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
+    ))
+)]
 #[cfg_attr(feature = "serde", serde(transparent))]
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Debug)]
 pub struct TypeDefTuple<T: Form = MetaForm> {
@@ -343,12 +341,15 @@ where
 }
 
 /// A type to refer to a sequence of elements of the same type.
-#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Debug)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serde", serde(bound(
-    serialize = "T::Type: Serialize, T::String: Serialize",
-    deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
-)))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(
+        serialize = "T::Type: Serialize, T::String: Serialize",
+        deserialize = "T::Type: DeserializeOwned, T::String: DeserializeOwned",
+    ))
+)]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Encode, Decode, Debug)]
 pub struct TypeDefSequence<T: Form = MetaForm> {
     /// The element type of the sequence type.
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
