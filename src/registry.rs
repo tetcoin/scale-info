@@ -27,10 +27,10 @@
 use crate::prelude::{
     any::TypeId,
     collections::BTreeMap,
+    fmt::Debug,
     mem,
     num::NonZeroU32,
     vec::Vec,
-    string::String,
 };
 
 use crate::{
@@ -53,6 +53,7 @@ use scale::{
 use serde::{
     Deserialize,
     Serialize,
+    de::DeserializeOwned,
 };
 
 /// Compacts the implementor using a registry.
@@ -204,27 +205,37 @@ impl Registry {
 
 /// A read-only registry, to be used for decoding/deserializing
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(bound(
+    serialize = "S: Serialize",
+    deserialize = "S: DeserializeOwned",
+)))]
 #[derive(Debug, PartialEq, Eq, Decode)]
-pub struct RegistryReadOnly {
-    types: Vec<Type<CompactForm<String>>>,
+pub struct RegistryReadOnly<S = &'static str>
+where
+    S: PartialEq + Eq + PartialOrd + Ord + Clone + Debug
+{
+    types: Vec<Type<CompactForm<S>>>,
 }
 
 impl From<Registry> for RegistryReadOnly {
     fn from(registry: Registry) -> Self {
-        let encoded = registry.encode();
-        Decode::decode(&mut &encoded[..])
-            .expect("Encoded registry should be decodable as a read-only version")
+        RegistryReadOnly {
+            types: registry.types.values().cloned().collect::<Vec<_>>(),
+        }
     }
 }
 
-impl RegistryReadOnly {
+impl<S> RegistryReadOnly<S>
+where
+    S: PartialEq + Eq + PartialOrd + Ord + Clone + Debug,
+{
     /// Returns the type definition for the given identifier, `None` if no type found for that ID.
-    pub fn resolve(&self, id: NonZeroU32) -> Option<&Type<CompactForm<String>>> {
+    pub fn resolve(&self, id: NonZeroU32) -> Option<&Type<CompactForm<S>>> {
         self.types.get((id.get() - 1) as usize)
     }
 
     /// Returns an iterator for all types paired with their associated NonZeroU32 identifier.
-    pub fn enumerate(&self) -> impl Iterator<Item = (NonZeroU32, &Type<CompactForm<String>>)> {
+    pub fn enumerate(&self) -> impl Iterator<Item = (NonZeroU32, &Type<CompactForm<S>>)> {
         self.types.iter().enumerate().map(|(i, ty)| {
             let id = NonZeroU32::new(i as u32 + 1).expect("i + 1 > 0; qed");
             (id, ty)

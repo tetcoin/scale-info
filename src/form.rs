@@ -77,7 +77,7 @@ impl Form for MetaForm {
 /// the registry itself) but can no longer be used to resolve to the original
 /// underlying data.
 ///
-/// `type String` is owned in order to enable decoding
+/// For decoding, use an owned type for `S` e.g. `String`.
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy, Debug)]
 #[cfg_attr(feature = "serde", derive(Serialize))]
 pub struct CompactForm<S = &'static str>(PhantomData<S>);
