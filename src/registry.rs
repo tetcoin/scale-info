@@ -51,6 +51,7 @@ use scale::{
 };
 #[cfg(feature = "serde")]
 use serde::{
+    de::DeserializeOwned,
     Deserialize,
     Serialize,
     de::DeserializeOwned,
