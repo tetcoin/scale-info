@@ -54,7 +54,6 @@ use serde::{
     de::DeserializeOwned,
     Deserialize,
     Serialize,
-    de::DeserializeOwned,
 };
 
 /// Compacts the implementor using a registry.
