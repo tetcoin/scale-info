@@ -16,7 +16,7 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 #![allow(dead_code)]
 
-use scale_info::prelude::{
+use tetsy_scale_info::prelude::{
     boxed::Box,
     marker::PhantomData,
     string::String,
@@ -28,7 +28,7 @@ use pretty_assertions::{
     assert_eq,
     assert_ne,
 };
-use scale_info::{
+use tetsy_scale_info::{
     form::PortableForm,
     meta_type,
     IntoPortable as _,
@@ -196,7 +196,7 @@ fn test_struct() {
 
 #[test]
 fn test_struct_with_phantom() {
-    use scale_info::prelude::marker::PhantomData;
+    use tetsy_scale_info::prelude::marker::PhantomData;
     #[derive(TypeInfo)]
     struct Struct<T> {
         a: i32,

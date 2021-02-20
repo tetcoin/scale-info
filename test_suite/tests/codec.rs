@@ -24,7 +24,7 @@ use scale::{
     Decode,
     Encode,
 };
-use scale_info::{
+use tetsy_scale_info::{
     form::PortableForm,
     prelude::{
         num::NonZeroU32,

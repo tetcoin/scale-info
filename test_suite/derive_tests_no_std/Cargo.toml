@@ -10,8 +10,8 @@ license = "Apache-2.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-scale-info = { path = "../..", default-features = false, features = ["derive"] }
-scale = { package = "parity-scale-codec", version = "2.0", features = ["full"] }
+tetsy-scale-info = { path = "../..", default-features = false, features = ["derive"] }
+scale = { package = "tetsy-scale-codec", version = "2.0", features = ["full"] }
 
 libc = { version = "0.2", default-features = false }
 

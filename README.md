@@ -1,12 +1,12 @@
-# scale-info &middot; [![build][a1]][a2] [![Latest Version][b1]][b2]
+# tetsy-scale-info &middot; [![build][a1]][a2] [![Latest Version][b1]][b2]
 
-[a1]: https://github.com/paritytech/scale-info/workflows/Rust/badge.svg
-[a2]: https://github.com/paritytech/scale-info/actions?query=workflow%3ARust+branch%3Amaster
-[b1]: https://img.shields.io/crates/v/scale-info.svg
-[b2]: https://crates.io/crates/scale-info
+[a1]: https://github.com/tetcoin/tetsy-scale-info/workflows/Rust/badge.svg
+[a2]: https://github.com/tetcoin/tetsy-scale-info/actions?query=workflow%3ARust+branch%3Amaster
+[b1]: https://img.shields.io/crates/v/tetsy-scale-info.svg
+[b2]: https://crates.io/crates/tetsy-scale-info
 
 A library to describe Rust types, geared towards providing info about the structure of [SCALE
-](https://github.com/paritytech/parity-scale-codec) encodable types.
+](https://github.com/tetcoin/tetsy-scale-codec) encodable types.
 
 The definitions provide third party tools (e.g. a UI client) with information about how they
 are able to decode types agnostic of language.
@@ -214,14 +214,14 @@ registered types are utilized to allow consumers to resolve the types.
 The type registry can be encoded as:
 
 - JSON (with the "serde" feature enabled).
-- SCALE itself (using `parity-scale-codec`).
+- SCALE itself (using `tetsy-scale-codec`).
 
 ## Features
 
 The following optional `cargo` features are available:
 
-- **serde** includes support for json serialization/deserialization of the type registry. See example [here](https://github.com/paritytech/scale-info/blob/master/test_suite/tests/json.rs).
-- **derive** reexports the [`scale-info-derive`](https://crates.io/crates/scale-info-derive) crate.
+- **serde** includes support for json serialization/deserialization of the type registry. See example [here](https://github.com/paritytech/tetsy-scale-info/blob/master/test_suite/tests/json.rs).
+- **derive** reexports the [`tetsy-scale-info-derive`](https://crates.io/crates/tetsy-scale-info-derive) crate.
 
 ## Resources
 

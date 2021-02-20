@@ -1,4 +1,4 @@
-use scale_info::TypeInfo;
+use tetsy_scale_info::TypeInfo;
 
 #[allow(dead_code)]
 #[derive(TypeInfo)]

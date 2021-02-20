@@ -1,13 +1,13 @@
 [package]
-name = "scale-info"
+name = "tetsy-scale-info"
 version = "0.5.0"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2018"
 
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/paritytech/scale-info"
-documentation = "https://docs.rs/scale-info"
+repository = "https://github.com/tetcoin/tetsy-scale-info"
+documentation = "https://docs.rs/tetsy-scale-info"
 homepage = "https://www.parity.io/"
 description = "Info about SCALE encodable Rust types"
 categories = ["no-std", "encoding"]
@@ -15,10 +15,10 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 
 [dependencies]
 cfg-if = "1.0"
-scale-info-derive = { version = "0.3.0", path = "derive", default-features = false, optional = true }
+tetsy-scale-info-derive = { version = "0.3.0", path = "derive", default-features = false, optional = true }
 serde = { version = "1", default-features = false, optional = true, features = ["derive", "alloc"] }
 derive_more = { version = "0.99.1", default-features = false, features = ["from"] }
-scale = { package = "parity-scale-codec", version = "2.0", default-features = false, features = ["derive"] }
+scale = { package = "tetsy-scale-codec", version = "2.0", default-features = false, features = ["derive"] }
 
 [features]
 default = ["std"]
@@ -26,7 +26,7 @@ std = [
     "scale/std",
 ]
 derive = [
-    "scale-info-derive"
+    "tetsy-scale-info-derive"
 ]
 
 [workspace]

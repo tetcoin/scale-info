@@ -15,14 +15,14 @@
 //! Builders for defining metadata for variant types (enums), and composite types (structs).
 //! They are designed to allow only construction of valid definitions.
 //!
-//! In most cases we recommend using the `scale-info-derive` crate to auto generate the builder
+//! In most cases we recommend using the `tetsy-scale-info-derive` crate to auto generate the builder
 //! constructions.
 //!
 //! # Examples
 //!
 //! ## Generic struct
 //! ```
-//! # use scale_info::{build::Fields, MetaType, Path, Type, TypeInfo};
+//! # use tetsy_scale_info::{build::Fields, MetaType, Path, Type, TypeInfo};
 //! struct Foo<T> {
 //!     bar: T,
 //!     data: u64,
@@ -47,7 +47,7 @@
 //! ```
 //! ## Tuple struct
 //! ```
-//! # use scale_info::{build::Fields, MetaType, Path, Type, TypeInfo};
+//! # use tetsy_scale_info::{build::Fields, MetaType, Path, Type, TypeInfo};
 //! struct Foo(u32, bool);
 //!
 //! impl TypeInfo for Foo {
@@ -65,7 +65,7 @@
 //! ```
 //! ## Enum with fields
 //! ```
-//! # use scale_info::{build::{Fields, Variants}, MetaType, Path, Type, TypeInfo};
+//! # use tetsy_scale_info::{build::{Fields, Variants}, MetaType, Path, Type, TypeInfo};
 //! enum Foo<T>{
 //!     A(T),
 //!     B { f: u32 },
@@ -93,7 +93,7 @@
 //! ```
 //! ## Enum without fields
 //! ```
-//! # use scale_info::{build::{Fields, Variants}, MetaType, Path, Type, TypeInfo};
+//! # use tetsy_scale_info::{build::{Fields, Variants}, MetaType, Path, Type, TypeInfo};
 //! enum Foo {
 //!     A,
 //!     B,

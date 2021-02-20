@@ -81,7 +81,7 @@ fn generate_type(input: TokenStream2) -> Result<TokenStream2> {
     let generic_type_ids = ast.generics.type_params().map(|ty| {
         let ty_ident = &ty.ident;
         quote! {
-            ::scale_info::meta_type::<#ty_ident>()
+            ::tetsy_scale_info::meta_type::<#ty_ident>()
         }
     });
 
@@ -93,12 +93,12 @@ fn generate_type(input: TokenStream2) -> Result<TokenStream2> {
     };
     let generic_types = ast.generics.type_params();
     let type_info_impl = quote! {
-        impl <#( #generic_types ),*> ::scale_info::TypeInfo for #ident #ty_generics #where_clause {
+        impl <#( #generic_types ),*> ::tetsy_scale_info::TypeInfo for #ident #ty_generics #where_clause {
             type Identity = Self;
-            fn type_info() -> ::scale_info::Type {
-                ::scale_info::Type::builder()
-                    .path(::scale_info::Path::new(stringify!(#ident), module_path!()))
-                    .type_params(::scale_info::prelude::vec![ #( #generic_type_ids ),* ])
+            fn type_info() -> ::tetsy_scale_info::Type {
+                ::tetsy_scale_info::Type::builder()
+                    .path(::tetsy_scale_info::Path::new(stringify!(#ident), module_path!()))
+                    .type_params(::tetsy_scale_info::prelude::vec![ #( #generic_type_ids ),* ])
                     .#build_type
                     .into()
             }
@@ -178,7 +178,7 @@ fn generate_composite_type(data_struct: &DataStruct) -> TokenStream2 {
         }
     };
     quote! {
-        composite(::scale_info::build::Fields::#fields)
+        composite(::tetsy_scale_info::build::Fields::#fields)
     }
 }
 
@@ -208,7 +208,7 @@ fn generate_c_like_enum_def(variants: &VariantList) -> TokenStream2 {
     });
     quote! {
         variant(
-            ::scale_info::build::Variants::fieldless()
+            ::tetsy_scale_info::build::Variants::fieldless()
                 #( #variants )*
         )
     }
@@ -237,7 +237,7 @@ fn generate_variant_type(data_enum: &DataEnum) -> TokenStream2 {
                 quote! {
                     .variant(
                         #v_name,
-                        ::scale_info::build::Fields::named()
+                        ::tetsy_scale_info::build::Fields::named()
                             #( #fields)*
                     )
                 }
@@ -247,7 +247,7 @@ fn generate_variant_type(data_enum: &DataEnum) -> TokenStream2 {
                 quote! {
                     .variant(
                         #v_name,
-                        ::scale_info::build::Fields::unnamed()
+                        ::tetsy_scale_info::build::Fields::unnamed()
                             #( #fields)*
                     )
                 }
@@ -261,7 +261,7 @@ fn generate_variant_type(data_enum: &DataEnum) -> TokenStream2 {
     });
     quote! {
         variant(
-            ::scale_info::build::Variants::with_fields()
+            ::tetsy_scale_info::build::Variants::with_fields()
                 #( #variants)*
         )
     }

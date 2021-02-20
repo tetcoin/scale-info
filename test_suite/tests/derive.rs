@@ -13,13 +13,13 @@
 // limitations under the License.
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use scale_info::prelude::{
+use tetsy_scale_info::prelude::{
     boxed::Box,
     marker::PhantomData,
 };
 
 use pretty_assertions::assert_eq;
-use scale_info::{
+use tetsy_scale_info::{
     build::*,
     tuple_meta_type,
     Path,

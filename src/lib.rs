@@ -33,7 +33,7 @@
 //! trait.
 //!
 //! This trait should be implemented for all types that are serializable.
-//! `scale-info` provides implementations for all commonly used Rust standard
+//! `tetsy-scale-info` provides implementations for all commonly used Rust standard
 //! types and a derive macro for implementing of custom types.
 //!
 //! # Forms
@@ -75,11 +75,11 @@
 /// # Example
 ///
 /// ```
-/// # use scale_info::tuple_meta_type;
+/// # use tetsy_scale_info::tuple_meta_type;
 /// assert_eq!(
 ///     tuple_meta_type!(i32, [u8; 32], String),
 ///     {
-///         use scale_info::MetaType;
+///         use tetsy_scale_info::MetaType;
 ///         let mut vec = Vec::new();
 ///         vec.push(MetaType::new::<i32>());
 ///         vec.push(MetaType::new::<[u8; 32]>());
@@ -126,7 +126,7 @@ pub use self::{
 };
 
 #[cfg(feature = "derive")]
-pub use scale_info_derive::TypeInfo;
+pub use tetsy_scale_info_derive::TypeInfo;
 
 /// Implementors return their meta type information.
 pub trait TypeInfo {
