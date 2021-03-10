@@ -1,5 +1,5 @@
 [package]
-name = "scale-info-derive-tests-no-std"
+name = "tetsy-scale-info-derive-tests-no-std"
 version = "0.0.0"
 authors = ["Parity Technologies <admin@parity.io>", "Centrality Developers <support@centrality.ai>"]
 edition = "2018"
@@ -10,8 +10,8 @@ license = "Apache-2.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-scale-info = { path = "../..", default-features = false, features = ["derive"] }
-scale = { package = "parity-scale-codec", version = "1.3", features = ["full"] }
+tetsy-scale-info = { path = "../..", default-features = false, features = ["derive"] }
+scale = { package = "tetsy-scale-codec", version = "1.3", features = ["full"] }
 
 libc = { version = "0.2", default-features = false }
 

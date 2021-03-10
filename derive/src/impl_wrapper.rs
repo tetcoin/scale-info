@@ -30,7 +30,7 @@ pub fn wrap(ident: &Ident, trait_name: &'static str, impl_quote: TokenStream2) -
 			#[allow(unknown_lints)]
 			#[cfg_attr(feature = "cargo-clippy", allow(useless_attribute))]
 			#[allow(rust_2018_idioms)]
-			use scale_info as _scale_info;
+			use tetsy_scale_info as _tetsy_scale_info;
 
 			#[cfg(not(feature = "std"))]
 			extern crate alloc;

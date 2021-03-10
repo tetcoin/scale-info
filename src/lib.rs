@@ -60,7 +60,7 @@
 //! compaction and provide this registry instance upon serialization. Done.
 //!
 //! A usage example can be found in ink! here:
-//! https://github.com/paritytech/ink/blob/master/abi/src/specs.rs
+//! https://github.com/tetcoin/pro/blob/master/abi/src/specs.rs
 
 #[cfg(not(feature = "std"))]
 extern crate alloc;
@@ -74,11 +74,11 @@ extern crate alloc;
 /// # Example
 ///
 /// ```
-/// # use scale_info::tuple_meta_type;
+/// # use tetsy_scale_info::tuple_meta_type;
 /// assert_eq!(
 ///     tuple_meta_type!(i32, [u8; 32], String),
 ///     {
-///         use scale_info::MetaType;
+///         use tetsy_scale_info::MetaType;
 ///         let mut vec = Vec::new();
 ///         vec.push(MetaType::new::<i32>());
 ///         vec.push(MetaType::new::<[u8; 32]>());
@@ -130,7 +130,7 @@ pub use self::{
 };
 
 #[cfg(feature = "derive")]
-pub use scale_info_derive::TypeInfo;
+pub use tetsy_scale_info_derive::TypeInfo;
 
 /// Implementors return their meta type information.
 pub trait TypeInfo {

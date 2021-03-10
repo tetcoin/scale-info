@@ -1,15 +1,15 @@
 [package]
-name = "scale-info-derive"
+name = "tetsy-scale-info-derive"
 version = "0.2.0"
-authors = ["Parity Technologies <admin@parity.io>", "Centrality Developers <support@centrality.ai>"]
-edition = "2018"
-
-license = "Apache-2.0"
-repository = "https://github.com/paritytech/scale-info"
-documentation = "https://docs.rs/scale-info"
-homepage = "https://www.parity.io/"
+authors = ["Parity Technologies <admin@parity.io>", "Centrality Developers <support@centrality.ai>", "Tetcoin Developers <support@tetcoin.org>"]
 description = "Derive type info for SCALE encodable types"
-categories = ["no-std", "encoding"]
+license = "Apache-2.0"
+edition = "2018"
+keywords = [ "tetcoin", "tetcore", "vapory" ]
+categories = [ "cryptography::cryptocurrencies", "no-std", "encoding" ]
+homepage = "https://core.tetcoin.org"
+repository = "https://github.com/tetcoin/tetsy-common"
+documentation = "https://docs.rs/tetsy-scale-info"
 
 [lib]
 proc-macro = true

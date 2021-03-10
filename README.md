@@ -1,12 +1,12 @@
-# scale-info &middot; [![build][a1]][a2] [![Latest Version][b1]][b2]
+# tetsy-scale-info &middot; [![build][a1]][a2] [![Latest Version][b1]][b2]
 
-[a1]: https://github.com/paritytech/scale-info/workflows/Rust/badge.svg
-[a2]: https://github.com/paritytech/scale-info/actions?query=workflow%3ARust+branch%3Amaster
-[b1]: https://img.shields.io/crates/v/scale-info.svg
-[b2]: https://crates.io/crates/scale-info
+[a1]: https://github.com/tetcoin/tetsy-scale-info/workflows/Rust/badge.svg
+[a2]: https://github.com/tetcoin/tetsy-scale-info/actions?query=workflow%3ARust+branch%3Amaster
+[b1]: https://img.shields.io/crates/v/tetsy-scale-info.svg
+[b2]: https://crates.io/crates/tetsy-scale-info
 
 A library to describe Rust types, geared towards providing info about the structure of [SCALE
-](https://github.com/paritytech/parity-scale-codec) encodable types.
+](https://github.com/tetcoin/parity-scale-codec) encodable types.
 
 The definitions provide third party tools (e.g. a UI client) with information about how they
 are able to decode types agnostic of language.
@@ -198,13 +198,13 @@ registered types are utilized to allow consumers to resolve the types.
 ## Serialization
 
 Currently the only supported serialization format is JSON, an example of which can be found
-[here](https://github.com/paritytech/scale-info/blob/master/test_suite/tests/json.rs).
+[here](https://github.com/tetcoin/tetsy-scale-info/blob/master/test_suite/tests/json.rs).
 
 Future support for binary formats is planned, either SCALE itself or a more compressed format where
 the monomorphization of Rust generic types could potentially result in very large files.
 
 ## Resources
 
-- See usage for describing types for [`ink!`](https://github.com/paritytech/ink/tree/master/abi
+- See usage for describing types for [`ink!`](https://github.com/tetcoin/ink/tree/master/abi
 ) smart contracts metadata.
 - [Original design draft (*outdated*)](https://hackmd.io/0wWm0ueBSF26m2pBG5NaeQ?view)

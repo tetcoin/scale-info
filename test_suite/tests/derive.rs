@@ -21,8 +21,8 @@ extern crate alloc;
 use alloc::boxed::Box;
 
 use pretty_assertions::assert_eq;
-use scale_info::build::*;
-use scale_info::{tuple_meta_type, Path, Type, TypeInfo};
+use tetsy_scale_info::build::*;
+use tetsy_scale_info::{tuple_meta_type, Path, Type, TypeInfo};
 
 fn assert_type<T, E>(expected: E)
 where

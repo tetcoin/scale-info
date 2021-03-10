@@ -24,7 +24,7 @@ use alloc::{vec, vec::Vec};
 use core::num::NonZeroU32;
 use pretty_assertions::{assert_eq, assert_ne};
 use scale::{Decode, Encode};
-use scale_info::{form::CompactForm, IntoCompact as _, MetaType, Registry, RegistryReadOnly, TypeInfo};
+use tetsy_scale_info::{form::CompactForm, IntoCompact as _, MetaType, Registry, RegistryReadOnly, TypeInfo};
 
 #[derive(TypeInfo)]
 struct A<T> {

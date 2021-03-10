@@ -129,7 +129,7 @@ fn struct_with_generics() {
 
 	// Normal struct
 	let struct_bool_type_info = Type::builder()
-		.path(Path::from_segments(vec!["scale_info", "tests", "MyStruct"]).unwrap())
+		.path(Path::from_segments(vec!["tetsy_scale_info", "tests", "MyStruct"]).unwrap())
 		.type_params(tuple_meta_type!(bool))
 		.composite(Fields::named().field_of::<bool>("data"));
 
@@ -138,7 +138,7 @@ fn struct_with_generics() {
 	// With "`Self` typed" fields
 	type SelfTyped = MyStruct<Box<MyStruct<bool>>>;
 	let expected_type = Type::builder()
-		.path(Path::new("MyStruct", "scale_info::tests"))
+		.path(Path::new("MyStruct", "tetsy_scale_info::tests"))
 		.type_params(tuple_meta_type!(Box<MyStruct<bool>>))
 		.composite(Fields::named().field_of::<Box<MyStruct<bool>>>("data"));
 	assert_type!(SelfTyped, expected_type);

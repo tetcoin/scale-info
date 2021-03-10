@@ -17,7 +17,7 @@
 
 extern crate alloc;
 
-use scale_info::TypeInfo;
+use tetsy_scale_info::TypeInfo;
 
 #[allow(unused)]
 #[derive(TypeInfo)]
